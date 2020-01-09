@@ -53,7 +53,6 @@ find_groups <- function(text = NULL, topic_id = NULL, radius = "global", api_key
     created = .date_helper(purrr::map_dbl(res, "created")),
     members = purrr::map_int(res, "members"),
     status = purrr::map_chr(res, "status"),
-    organizer = purrr::map_chr(res, c("organizer", "name")),
     lat = purrr::map_dbl(res, "lat"),
     lon = purrr::map_dbl(res, "lon"),
     city = purrr::map_chr(res, "city"),
@@ -63,8 +62,8 @@ find_groups <- function(text = NULL, topic_id = NULL, radius = "global", api_key
     join_mode = purrr::map_chr(res, "join_mode", .default = NA),
     visibility = purrr::map_chr(res, "visibility", .default = NA),
     who = purrr::map_chr(res, "who", .default = NA),
-    organizer_id = purrr::map_int(res, c("organizer", "id")),
-    organizer_name = purrr::map_chr(res, c("organizer", "name")),
+    organizer_id = purrr::map_int(res, c("organizer", "id"), .default = NA),
+    organizer_name = purrr::map_chr(res, c("organizer", "name"), .default = NA),
     category_id = purrr::map_int(res, c("category", "id"), .default = NA),
     category_name = purrr::map_chr(res, c("category", "name"), .default = NA),
     resource = res

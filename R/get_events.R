@@ -32,6 +32,7 @@
 #'    * venue_zip
 #'    * venue_country
 #'    * description
+#'    * is_online_event
 #'    * link
 #'    * resource
 #'
@@ -78,6 +79,7 @@ get_events <- function(urlname, event_status = "upcoming", api_key = NULL) {
     venue_zip = purrr::map_chr(res, c("venue", "zip"), .default = NA),
     venue_country = purrr::map_chr(res, c("venue", "country"), .default = NA),
     description = purrr::map_chr(res, c("description"), .default = NA),
+    is_online_event = purrr::map_lgl(res, 'is_online_event', .default = NA),
     link = purrr::map_chr(res, c("link")),
     resource = res
   )
